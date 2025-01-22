@@ -10,7 +10,7 @@ RUN npm run build
 RUN node tools/generate-health.js
 
 # production stage
-FROM openresty/openresty:bullseye as production-stage
+FROM openresty/openresty:1.27.1.1-1-bullseye as production-stage
 COPY --from=build-stage /dist /usr/share/nginx/html
 COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf.template
 
